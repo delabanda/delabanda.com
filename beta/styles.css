@@ -53,13 +53,6 @@ body {
   font-size: 8vw;
 }
 
-.center {
-  position: relative;
-  border: 1px solid red;
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
-}
-
 .youmeus .left {
   position: absolute;
   -webkit-transform: translateX(-20vw);

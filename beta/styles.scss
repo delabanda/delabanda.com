@@ -75,12 +75,6 @@ body {
   font-size: 8vw;
 }
 
-.center {
-  position: relative;
-  border: 1px solid red;
-  transform: translateX(0);
-}
-
 @each $side, $sk in $sides {
   .youmeus .#{$side} {
     position: absolute;
