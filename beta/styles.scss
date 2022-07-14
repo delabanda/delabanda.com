@@ -1,0 +1,147 @@
+// Start of configuration
+
+// Radius of the circles
+$radius:40vw;
+// Offset from the center of the circles
+$offset: 20vw;
+
+// Blur
+$blur: 0.2em;
+
+// Percentage where the blur starts in the circle
+$start: 5;
+// Blur duration
+$blur_duration: 5;
+// Duration of 'up' word
+$up_duration: 15;
+// End: calculated as start, blur, up duration, and blur again
+$end: $start + $blur_duration + $up_duration + $blur_duration;
+
+// End configuration ..........
+
+// Number of words, has to correspond to the number of words in html.
+$words: 12;
+
+$sides: (
+  left 1,
+  right -1
+);
+
+:root {
+  --scroll: 0; 
+}
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+.youmeus {
+  text-transform:lowercase;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 8vw;
+  font-family: 'Questrial', sans-serif;
+  font-weight: 400;
+}
+
+@each $side, $sk in $sides {
+  .youmeus .#{$side} {
+    position: relative;
+    transform: translateX(-1 * $sk * $offset);
+  }
+
+  @for $i from 0 to $words {
+    .#{$side} .morphing:nth-child(#{$i + 1}) {
+      animation: rotate-#{$side} 1s linear infinite;
+      animation-play-state: paused;
+      animation-delay: calc((var(--scroll) + (1/#{$words}) * #{$i}) * -1s);
+
+      animation-iteration-count: 2;
+      animation-fill-mode: both;
+
+
+      color: #fff;
+    }
+  }
+}
+
+@each $side, $sk in $sides {
+  @keyframes rotate-#{$side} {
+    0% {
+      transform: rotate(0deg * $sk)  translateY(-#{$radius}) rotate(-0deg * $sk);
+
+    }
+
+    100% {
+      transform: rotate(360deg * $sk) translateY(-#{$radius}) rotate(-360deg * $sk);
+
+    } 
+  }
+}
+
+.word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@for $i from 0 to $words {
+  .morphing:nth-child(#{$i + 1}) .word.youme {
+    animation: youme 1s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc((var(--scroll) + (1/#{$words}) * #{$i}) * -1s);
+
+    animation-iteration-count: 2;
+    animation-fill-mode: both;
+  }
+
+  .morphing:nth-child(#{$i + 1}) .word.us {
+    animation: us 1s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc((var(--scroll) + (1/#{$words}) * #{$i}) * -1s);
+
+    font-weight: 400;
+
+    animation-iteration-count: 2;
+    animation-fill-mode: both;
+  } 
+}
+
+
+@mixin invisible-word {
+  filter: blur($blur);
+  opacity: 0;
+}
+
+@mixin visible-word {
+  filter: blur(0px);
+  opacity: 1;
+}
+
+@keyframes youme {
+  0%,
+  #{$start}%,
+  #{$start + $blur_duration + $up_duration + $blur_duration}%,
+  100% { @include visible-word(); }
+
+  #{$start + $blur_duration}%,
+  #{$start + $blur_duration + $up_duration}% { @include invisible-word(); }
+}
+
+
+@keyframes us {
+  0%,
+  #{$start}%,
+  #{$start + $blur_duration + $up_duration + $blur_duration}%,
+  100% { @include invisible-word(); }
+
+  #{$start + $blur_duration}%,
+  #{$start + $blur_duration + $up_duration}% { @include visible-word(); }
+}
+
+body {
+  background-color: #2461F4;
+  min-height: 500vh;
+  margin: 40em 0;
+}
