@@ -30,23 +30,60 @@ $sides: (
 :root {
   --scroll: 0; 
 }
+
+body {
+  background-color: #2461F4;
+  min-height: 500vh;
+  margin: 0;
+  font-family: 'Questrial', sans-serif;
+  color: white;
+  font-weight: 400;
+}
+
+.header {
+  .name {
+    font-size: 2em;
+  }
+  .title {
+    font-size: 1.5em;
+  }
+}
+
+.me-nav-circle {
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+  line-height: 4em;
+  border-radius: 50%;
+  font-size: 1em;
+  text-align: center;
+  background-color: white;
+  color: #2461F4;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 .youmeus {
-  text-transform:lowercase;
+  margin-top: $radius / 2;
+  text-transform: lowercase;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100%;
   align-items: center;
   justify-content: center;
+  height: 2 * $radius;
+  width: 100vw;
   font-size: 8vw;
-  font-family: 'Questrial', sans-serif;
-  font-weight: 400;
+}
+
+.center {
+  position: relative;
+  border: 1px solid red;
+  transform: translateX(0);
 }
 
 @each $side, $sk in $sides {
   .youmeus .#{$side} {
-    position: relative;
+    position: absolute;
     transform: translateX(-1 * $sk * $offset);
   }
 
@@ -58,9 +95,6 @@ $sides: (
 
       animation-iteration-count: 2;
       animation-fill-mode: both;
-
-
-      color: #fff;
     }
   }
 }
@@ -68,7 +102,7 @@ $sides: (
 @each $side, $sk in $sides {
   @keyframes rotate-#{$side} {
     0% {
-      transform: rotate(0deg * $sk)  translateY(-#{$radius}) rotate(-0deg * $sk);
+      transform: rotate(0deg * $sk) translateY(-#{$radius}) rotate(-0deg * $sk);
 
     }
 
@@ -138,10 +172,4 @@ $sides: (
 
   #{$start + $blur_duration}%,
   #{$start + $blur_duration + $up_duration}% { @include visible-word(); }
-}
-
-body {
-  background-color: #2461F4;
-  min-height: 500vh;
-  margin: 40em 0;
 }
