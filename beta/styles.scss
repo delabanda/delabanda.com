@@ -9,11 +9,11 @@ $offset: 20vw;
 $blur: 0.2em;
 
 // Percentage where the blur starts in the circle
-$start:4.5;
+$start:5;
 // Blur duration
-$blur_duration: 5;
+$blur_duration: 6;
 // Duration of 'up' word
-$up_duration: 29.5;
+$up_duration: 28.5;
 // End: calculated as start, blur, up duration, and blur again
 $end: $start + $blur_duration + $up_duration + $blur_duration;
 
