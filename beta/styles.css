@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
+html {
+  overflow: hidden;
+  width: 100%;
+}
+
 body {
   background-color: #2461F4;
   min-height: 500vh;
@@ -8,6 +13,11 @@ body {
   color: white;
   font-weight: 400;
   overflow-x: hidden;
+
+  height: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .header {
