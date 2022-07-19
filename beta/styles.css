@@ -10,21 +10,27 @@ body {
   overflow-x: hidden;
 }
 
-.header .name {
+.header {
   font-size: 2em;
 }
 
+.header .name {
+  font-weight: 800;
+}
+
 .header .title {
-  font-size: 1.5em;
+  font-weight: 200;
 }
 
 .me-nav-circle {
+  --size: 3em;
+
   display: inline-block;
-  width: 4em;
-  height: 4em;
-  line-height: 4em;
+  width: var(--size);
+  height: var(--size);
+  line-height: var(--size);
   border-radius: 50%;
-  font-size: 1em;
+  font-size: 0.7em;
   text-align: center;
   background-color: white;
   color: #2461F4;
