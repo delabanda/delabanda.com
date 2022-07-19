@@ -1,17 +1,29 @@
 'use strict';
 
-let words = [];
-
+// Begin config
 const wordsCount = 12;
 const radius = 45;
 const separation = 20;
-const speed = 70;
-const offset = 0;
+const speed = 50;
+const initialSpeed = 35;
+const inertia = 50;
+const offset = 35;
+// End config
 
+function linear(a, b, n) {
+    return (1 - n) * a + n * b;
+}
+
+let words = [];
 let lastT = 0;
+let dy = -initialSpeed;
 
 function animateCircles() {
-    const t = -1 * ($(window).scrollTop() + offset) * speed / 100000;
+    const sy = window.pageYOffset;
+    dy = linear(dy, sy, 1/inertia);
+
+    const t = -1 * (sy + dy  + offset) * speed / 100000;
+    
     if (t != lastT) {
         for (let i = 0; i < words.length; i++) {
             applyStyles(words[i], t);
