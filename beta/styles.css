@@ -6,7 +6,7 @@ body {
   font-size: 24pt;
   color: white;
   font-weight: 400;
-  font-family: "SuisseBPIntl-Regular";
+  font-family: "SuisseBPIntl-Regular", sans-serif;
 }
 
 .abs-float {
@@ -30,12 +30,12 @@ body {
 }
 
 .header .name {
-  font-family: "SuisseBPIntl-Regular";
+  font-family: "SuisseBPIntl-Regular", sans-serif;
   white-space: nowrap;
 }
 
 .header .title {
-  font-family: "SuisseBPIntl-Thin";
+  font-family: "SuisseBPIntl-Thin", sans-serif;
   white-space: nowrap;
 }
 

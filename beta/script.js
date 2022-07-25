@@ -7,7 +7,8 @@ const separation = 20;
 const speed = 50;
 const initialSpeed = 35;
 const inertia = 50;
-const offset = 35;
+const offsetHorizontalDevice = 35;
+const offsetVerticalDevice = -25;
 // End config
 
 function linear(a, b, n) {
@@ -30,6 +31,7 @@ function animateCircles() {
     const sy = window.pageYOffset;
     dy = linear(dy, sy, 1 / inertia);
 
+    const offset = verticalDevice ? offsetVerticalDevice : offsetHorizontalDevice;
     const t = -1 * (sy + dy + offset) * speed / 100000;
 
     if (t == lastT) {
@@ -59,10 +61,6 @@ function animateCircles() {
     requestAnimationFrame(animateCircles);
 }
 
-const transitionToUsStart = 195;
-const transitionDuration = 20;
-const usDuration = (270 - transitionToUsStart - transitionDuration) * 2;
-const transitionBackStart = transitionToUsStart + transitionDuration + usDuration;
 
 const maxBlur = 0.2;
 
@@ -70,6 +68,11 @@ function applyStyles(n, t) {
     const rot = angle(n.idx, t);
     n.l.word.css('transform', wordTranslateStyle(rot, n.l.side));
     n.r.word.css('transform', wordTranslateStyle(rot, n.r.side));
+
+    const transitionToUsStart = verticalDevice ? 210 : 195;
+    const transitionDuration = 20;
+    const usDuration = (270 - transitionToUsStart - transitionDuration) * 2;
+    const transitionBackStart = transitionToUsStart + transitionDuration + usDuration;
 
     if (transitionToUsStart <= rot && rot <= transitionToUsStart + transitionDuration) {
         const progress = (rot - transitionToUsStart) / transitionDuration;
@@ -148,7 +151,7 @@ function createWord(youmeText, usText, idx, side) {
 
     const container = $('<div class="abs-centered"></div>');
     container.append(word)
-    const w = { container, word, youme, us, idx, side };
+    const w = { container, word, youme, us, idx, side, debug };
     return w;
 }
 
