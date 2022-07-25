@@ -14,6 +14,9 @@ function linear(a, b, n) {
     return (1 - n) * a + n * b;
 }
 
+let youmeus;
+let floatingHeader;
+
 let words = [];
 let lastT = 0;
 let dy = -initialSpeed;
@@ -24,20 +27,32 @@ function animateCircles() {
     verticalDevice = window.innerHeight > window.innerWidth;
 
     const sy = window.pageYOffset;
-    dy = linear(dy, sy, 1/inertia);
+    dy = linear(dy, sy, 1 / inertia);
 
-    const t = -1 * (sy + dy  + offset) * speed / 100000;
-    
-    if (t != lastT) {
-        for (let i = 0; i < words.length; i++) {
-            applyStyles(words[i], t);
-        }
-        lastT = t;
+    const t = -1 * (sy + dy + offset) * speed / 100000;
+
+    if (t == lastT) {
+        requestAnimationFrame(animateCircles);
+        return;
     }
+
+    for (let i = 0; i < words.length; i++) {
+        applyStyles(words[i], t);
+    }
+    lastT = t;
+
     if (verticalDevice) {
-        $("#youmeus").addClass("vertical");
+        youmeus.addClass("vertical");
     } else {
-        $("#youmeus").removeClass("vertical");
+        youmeus.removeClass("vertical");
+    }
+
+    if (youmeus.get(0).getBoundingClientRect().bottom < window.innerHeight / 10) {
+        floatingHeader.removeClass("op-0");
+        youmeus.addClass("op-0");
+    } else {
+        floatingHeader.addClass("op-0");
+        youmeus.removeClass("op-0");
     }
 
     requestAnimationFrame(animateCircles);
@@ -73,10 +88,10 @@ function applyStyles(n, t) {
     }
 }
 
-function morph(from, to, progress) { 
+function morph(from, to, progress) {
     from.css('filter', `blur(${maxBlur * progress}em)`);
-    from.css('opacity', `${1-progress}`);
-    to.css('filter', `blur(${maxBlur * (1-progress)}em)`);
+    from.css('opacity', `${1 - progress}`);
+    to.css('filter', `blur(${maxBlur * (1 - progress)}em)`);
     to.css('opacity', `${progress}`);
 }
 
@@ -91,15 +106,21 @@ function angle(idx, t) {
 }
 
 function init() {
+    youmeus = $("#youmeus");
+
     for (let idx = 0; idx < wordsCount; idx++) {
-        let youmeus = $("#youmeus");
-
         const w = createWords(idx);
-
         youmeus.append(w.l.container);
         youmeus.append(w.r.container);
         words.push(w);
     }
+
+    const header = $("#header_container")
+    floatingHeader = header
+                        .clone()
+                        .addClass("abs-float tr-med op-0")
+                        .attr("id", "floating_header_container");
+    header.after(floatingHeader);
 
     requestAnimationFrame(animateCircles);
 }

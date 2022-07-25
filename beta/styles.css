@@ -9,6 +9,20 @@ body {
   font-family: "SuisseBPIntl-Regular";
 }
 
+.abs-float {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.tr-med {
+  transition: 500ms;
+}
+
+.op-0 {
+  opacity: 0;
+}
+
 @media (min-width: 1200px) {
   .header {
     font-size: 1.5em !important;
@@ -57,13 +71,11 @@ body {
   font-size: 6vh;
 }
 
-
 @media (min-width: 1200px) {
   #youmeus {
     font-size: 120pt;
   }
 }
-
 
 .abs-centered {
   position: absolute;
@@ -89,7 +101,7 @@ a {
   height: 3em;
   line-height: 3em;
   border-radius: 1.5em;
-  font-size: 0.7em;
+  font-size: 16pt;
   text-align: center;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -97,6 +109,18 @@ a {
   cursor: pointer;
   padding: 0 2em;
   white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  #letstalk {
+    font-size: 3vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  #letstalk {
+    font-size: 28pt;
+  }
 }
 
 #letstalk:hover {
