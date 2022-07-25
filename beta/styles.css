@@ -47,10 +47,20 @@ body {
   height: var(--size);
   line-height: var(--size);
   border-radius: 50%;
-  font-size: 0.7em;
+  font-size: 0.75em;
   text-align: center;
   background-color: white;
   color: #2461F4;
+}
+
+@media (max-width: 768px) {
+  .header .name, .header .title {
+    display: block;
+  }
+
+  .me-nav-circle {
+    --size: 4em;
+  }
 }
 
 #youmeus {

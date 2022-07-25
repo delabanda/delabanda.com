@@ -15,6 +15,7 @@ function linear(a, b, n) {
 }
 
 let youmeus;
+let youmeusContainer;
 let floatingHeader;
 
 let words = [];
@@ -49,10 +50,10 @@ function animateCircles() {
 
     if (youmeus.get(0).getBoundingClientRect().bottom < window.innerHeight / 10) {
         floatingHeader.removeClass("op-0");
-        youmeus.addClass("op-0");
+        youmeusContainer.addClass("op-0");
     } else {
         floatingHeader.addClass("op-0");
-        youmeus.removeClass("op-0");
+        youmeusContainer.removeClass("op-0");
     }
 
     requestAnimationFrame(animateCircles);
@@ -106,6 +107,7 @@ function angle(idx, t) {
 }
 
 function init() {
+    youmeusContainer = $("#youmeus_container")
     youmeus = $("#youmeus");
 
     for (let idx = 0; idx < wordsCount; idx++) {
