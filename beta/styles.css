@@ -3,23 +3,26 @@
 body {
   background-color: #2461F4;
   margin: 0;
-  font-family: 'Questrial', sans-serif;
   font-size: 24pt;
   color: white;
   font-weight: 400;
-  overflow-x: hidden;
+  font-family: "SuisseBPIntl-Regular";
 }
 
-.header {
-  font-size: 2vw;
-}
+@media (min-width: 1200px) {
+  .header {
+    font-size: 1.5em !important;
+  }
+ }
 
 .header .name {
-  font-weight: 800;
+  font-family: "SuisseBPIntl-Regular";
+  white-space: nowrap;
 }
 
 .header .title {
-  font-weight: 200;
+  font-family: "SuisseBPIntl-Thin";
+  white-space: nowrap;
 }
 
 .me-nav-circle {
@@ -37,14 +40,16 @@ body {
 }
 
 #youmeus {
+  font-family: 'Questrial', sans-serif;
   display: block;
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vw;
   font-size: 8vw;
   font-family: Questrial;
-  margin-left: calc(var(--bs-gutter-x) * -.5);
-  margin-right: calc(var(--bs-gutter-x) * -.5);
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .abs-centered {
