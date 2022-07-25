@@ -18,7 +18,11 @@ let words = [];
 let lastT = 0;
 let dy = -initialSpeed;
 
+let verticalDevice = false;
+
 function animateCircles() {
+    verticalDevice = window.innerHeight > window.innerWidth;
+
     const sy = window.pageYOffset;
     dy = linear(dy, sy, 1/inertia);
 
@@ -30,6 +34,12 @@ function animateCircles() {
         }
         lastT = t;
     }
+    if (verticalDevice) {
+        $("#youmeus").addClass("vertical");
+    } else {
+        $("#youmeus").removeClass("vertical");
+    }
+
     requestAnimationFrame(animateCircles);
 }
 
@@ -71,7 +81,9 @@ function morph(from, to, progress) {
 }
 
 function wordTranslateStyle(rot, side) {
-    return `translateX(${separation * side}vw) rotate(${-rot * side}deg) translateY(${radius}vw) rotate(${rot * side}deg)`;
+    const unit = verticalDevice ? "vh" : "vw";
+    const sep = verticalDevice ? separation * 1.5 : separation;
+    return `translateX(${sep * side}${unit}) rotate(${-rot * side}deg) translateY(${radius}${unit}) rotate(${rot * side}deg)`;
 }
 
 function angle(idx, t) {

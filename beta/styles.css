@@ -13,7 +13,7 @@ body {
   .header {
     font-size: 1.5em !important;
   }
- }
+}
 
 .header .name {
   font-family: "SuisseBPIntl-Regular";
@@ -52,9 +52,22 @@ body {
   overflow-y: hidden;
 }
 
+#youmeus.vertical {
+  height: 100vh;
+  font-size: 6vh;
+}
+
+
+@media (min-width: 1200px) {
+  #youmeus {
+    font-size: 120pt;
+  }
+}
+
+
 .abs-centered {
   position: absolute;
-  top: 50%; 
+  top: 50%;
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -83,6 +96,7 @@ a {
   transition: 0.5s;
   cursor: pointer;
   padding: 0 2em;
+  white-space: nowrap;
 }
 
 #letstalk:hover {
