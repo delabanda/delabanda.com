@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
 body {
-  background-color: #2461F4;
   margin: 0;
   font-size: 24pt;
-  color: white;
   font-weight: 400;
   font-family: "SuisseBPIntl-Regular", sans-serif;
+}
+
+body.home {
+  background-color: #2461F4;
+  color: white;
 }
 
 .abs-float {
@@ -135,4 +138,64 @@ a {
 
 #letstalk:hover {
   border: 1px solid rgba(255, 255, 255, 1);
+}
+
+body.about {
+  color: white;
+  background-color: #212121;
+}
+
+.about a {
+  color: white;
+}
+.about a:hover {
+  color: #2461F4;
+}
+
+
+.about-container {
+  min-height: calc(100vh - 40pt);
+  margin: 20pt;
+  font-weight: 100;
+  font-family: "SuisseBPIntl-Thin", sans-serif;
+  position: relative;
+}
+
+.about .header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.about-container .text p + p {
+  margin-top: 1em;
+}
+
+@media (min-width: 768px) {
+  .about-container {
+    max-width: 70vw;
+  }
+}
+
+.about ul.links {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about .links li {
+ display: inline-block;
+}
+
+.about .text  .links li:not(:last-child)::after {
+  content: " / ";
+}
+
+.about .contact .links li + li {
+  margin-left: 1em;
+}
+
+.contact {
+  align-self: flex-end;
 }
