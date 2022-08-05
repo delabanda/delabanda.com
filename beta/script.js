@@ -54,6 +54,11 @@ function animateCircles() {
         floatingHeader.removeClass("op-0");
         youmeusContainer.addClass("op-0");
     } else {
+        if (youmeus.get(0).getBoundingClientRect().bottom > window.innerHeight / 3) {
+            floatingHeader.css("display", "none");
+        } else {
+            floatingHeader.css("display", "block");
+        }
         floatingHeader.addClass("op-0");
         youmeusContainer.removeClass("op-0");
     }

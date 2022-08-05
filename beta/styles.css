@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
+:root {
+  --home-bg: #2461F4;
+  --about-bg: #212121;
+}
+
 body {
   margin: 0;
   font-size: 24pt;
@@ -8,7 +13,7 @@ body {
 }
 
 body.home {
-  background-color: #2461F4;
+  background-color: var(--home-bg);
   color: white;
 }
 
@@ -54,6 +59,16 @@ body.home {
   text-align: center;
   background-color: white;
   color: #2461F4;
+}
+
+.home .me-nav-circle:hover {
+  color: white;
+  background-color: var(--about-bg);
+}
+
+.about .me-nav-circle:hover {
+  color: white;
+  background-color: var(--home-bg);
 }
 
 @media (max-width: 768px) {
@@ -142,7 +157,7 @@ a {
 
 body.about {
   color: white;
-  background-color: #212121;
+  background-color: var(--about-bg);
 }
 
 .about a {
