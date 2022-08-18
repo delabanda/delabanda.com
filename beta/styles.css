@@ -143,6 +143,7 @@ a {
   cursor: pointer;
   padding: 0 2em;
   white-space: nowrap;
+  font-family: "SuisseBPIntl-Regular", sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -159,6 +160,7 @@ a {
 
 #letstalk:hover {
   border: 1px solid rgba(255, 255, 255, 1);
+  font-weight: bold;
 }
 
 body.about {
