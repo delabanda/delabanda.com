@@ -187,9 +187,9 @@ body.about {
 
 .home-float-space {
   float: right;
-  --size: 3em;
-  width: var(--size);
-  height: var(--size);
+  padding: 0 0 0.5em 1em;
+  opacity: 0;
+  z-index: -1;
 }
 
 @media (min-width: 768px) {
