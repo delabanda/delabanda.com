@@ -230,10 +230,25 @@ body.about {
   content: " / ";
 }
 
-.about .contact .links li + li {
-  margin-left: 1em;
-}
-
 .contact {
   align-self: flex-end;
+}
+
+@media (min-width: 768px) {
+  .about .contact .links li + li {
+    margin-left: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .about .contact ul.links {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .about .contact .links li {
+    display: block;
+  }
 }
