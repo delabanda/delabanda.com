@@ -143,7 +143,7 @@ a {
   cursor: pointer;
   padding: 0 2em;
   white-space: nowrap;
-  font-family: "SuisseBPIntl-Regular", sans-serif;
+  font-family: "SuisseBPIntl-Light", sans-serif;
 }
 
 @media (min-width: 768px) {
