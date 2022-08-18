@@ -3,7 +3,8 @@
 // Begin config
 const wordsCount = 12;
 const radius = 45;
-const separation = 20;
+const separationHorizontalDevice = 20;
+const separationVerticalDevice = 30;
 const speed = 50;
 const initialSpeed = 35;
 const inertia = 50;
@@ -106,7 +107,7 @@ function morph(from, to, progress) {
 
 function wordTranslateStyle(rot, side) {
     const unit = verticalDevice ? "vh" : "vw";
-    const sep = verticalDevice ? separation * 1.5 : separation;
+    const sep = verticalDevice ? separationVerticalDevice : separationHorizontalDevice;
     return `translateX(${sep * side}${unit}) rotate(${-rot * side}deg) translateY(${radius}${unit}) rotate(${rot * side}deg)`;
 }
 
