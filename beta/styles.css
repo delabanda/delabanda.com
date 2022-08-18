@@ -51,14 +51,15 @@ body.home {
   --size: 2.5em;
 
   display: inline-block;
-  width: var(--size);
+  min-width: var(--size);
   height: var(--size);
   line-height: var(--size);
-  border-radius: 50%;
+  border-radius: var(--size);
   font-size: 24px;
   text-align: center;
   background-color: white;
   color: #2461F4;
+  padding: 0 0.5em;
 }
 
 .home .me-nav-circle:hover {
@@ -166,7 +167,6 @@ body.about {
 .about a:hover {
   color: #2461F4;
 }
-
 
 .about-container {
   min-height: calc(100vh - 40pt);
