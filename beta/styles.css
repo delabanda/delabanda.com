@@ -67,9 +67,14 @@ body.home {
   background-color: var(--about-bg);
 }
 
-.about .me-nav-circle:hover {
+.about .me-nav-circle {
   color: white;
   background-color: var(--home-bg);
+}
+
+.about .me-nav-circle:hover {
+  color: var(--home-bg);
+  background-color: white;
 }
 
 @media (max-width: 768px) {
