@@ -40,6 +40,7 @@ body.home {
 .header .name {
   font-family: "SuisseBPIntl-Regular", sans-serif;
   white-space: nowrap;
+  margin-right: 0.5rem;
 }
 
 .header .title {
@@ -60,6 +61,8 @@ body.home {
   background-color: white;
   color: #2461F4;
   padding: 0 0.5em;
+  font-family: "SuisseBPIntl-Light", sans-serif;
+  font-weight: bold;
 }
 
 .home .me-nav-circle:hover {
@@ -192,12 +195,13 @@ body.about {
   padding: 0 1rem 1rem 1rem;
 }
 
-.about-container .text p + p {
+.about-container .text div + div {
   margin-top: 1em;
 }
 
 @media (min-width: 768px) {
   .about-container {
+    margin-top: 1rem;
     max-width: 80vw;
     padding: 1rem;
   }
