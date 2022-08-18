@@ -176,7 +176,8 @@ body.about {
 .about-container {
   min-height: calc(100vh - 40pt);
   font-weight: 100;
-  font-family: "SuisseBPIntl-Thin", sans-serif;
+  font-family: "SuisseBPIntl-UltraLight", sans-serif;
+  font-size: 26px;
   position: relative;
 }
 
