@@ -170,7 +170,6 @@ body.about {
 
 .about-container {
   min-height: calc(100vh - 40pt);
-  margin: 20pt;
   font-weight: 100;
   font-family: "SuisseBPIntl-Thin", sans-serif;
   position: relative;
@@ -185,7 +184,6 @@ body.about {
 .about-container .text p + p {
   margin-top: 1em;
 }
-
 
 .home-float-space {
   float: right;
