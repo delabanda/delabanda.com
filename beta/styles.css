@@ -43,7 +43,7 @@ body.home {
   padding: 1rem 1rem 4rem 1rem;
 }
 
-.header .name, .header .title {
+.about .header .name, .about .header .title {
   display: none;
 }
 
@@ -91,11 +91,12 @@ body.home {
 }
 
 @media (max-width: 768px) {
-  .header .name, .header .title {
-    font-size: 20px;
+  .about .header .name, .about .header .title {
+    display: block;
   }
 
   .header .name, .header .title {
+    font-size: 20px;
     display: block;
   }
 
