@@ -43,6 +43,10 @@ body.home {
   padding: 1rem 1rem 4rem 1rem;
 }
 
+.header .name, .header .title {
+  display: none;
+}
+
 .header .name {
   font-family: "SuisseBPIntl-Regular", sans-serif;
   white-space: nowrap;
