@@ -44,7 +44,7 @@ body.home {
 }
 
 .header .name, .header .title {
-  display: noneg;
+  display: none;
 }
 
 .header .name {
