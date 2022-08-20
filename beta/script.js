@@ -91,10 +91,10 @@ function applyStyles(n, pos) {
         return
     }
 
-    const transitionToUsStart = verticalDevice ? 210 : 195;
     const transitionDuration = 20;
-    const usDuration = (270 - transitionToUsStart - transitionDuration) * 2;
-    const transitionBackStart = transitionToUsStart + transitionDuration + usDuration;
+    const transitionToUsStart = overlappingWordsAngle - transitionDuration / 2;
+    const secondOverlappingWordsAngle = 270 + (270 - overlappingWordsAngle);
+    const transitionBackStart = secondOverlappingWordsAngle - transitionDuration / 2;
 
     if (transitionToUsStart <= rot && rot <= transitionToUsStart + transitionDuration) {
         const progress = (rot - transitionToUsStart) / transitionDuration;
