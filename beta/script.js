@@ -12,28 +12,20 @@ const offsetHorizontalDevice = 35;
 const offsetVerticalDevice = -25;
 // End config
 
-function linear(a, b, n) {
-    return (1 - n) * a + n * b;
-}
-
 let youmeus;
 let youmeusContainer;
 let floatingHeader;
 
 let words = [];
 let lastT = 0;
-let dy = -initialSpeed;
 
 let verticalDevice = false;
 
 function animateCircles() {
     verticalDevice = window.innerHeight > window.innerWidth;
 
-    const sy = window.pageYOffset;
-    dy = linear(dy, sy, 1 / inertia);
-
     const offset = verticalDevice ? offsetVerticalDevice : offsetHorizontalDevice;
-    const t = -1 * (sy + dy + offset) * speed / 100000;
+    const t = -1 * (window.pageYOffset + offset) * speed / 100000;
 
     if (t == lastT) {
         requestAnimationFrame(animateCircles);
