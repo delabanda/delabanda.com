@@ -8,8 +8,6 @@ const separationVerticalDevice = 30;
 const speed = 50;
 const initialSpeed = 35;
 const inertia = 50;
-const offsetHorizontalDevice = 35;
-const offsetVerticalDevice = -25;
 // End config
 
 let youmeus;
@@ -17,25 +15,23 @@ let youmeusContainer;
 let floatingHeader;
 
 let words = [];
-let lastT = 0;
+let lastPageYOffset = 0;
 
 let verticalDevice = false;
 
 function animateCircles() {
     verticalDevice = window.innerHeight > window.innerWidth;
 
-    const offset = verticalDevice ? offsetVerticalDevice : offsetHorizontalDevice;
-    const t = -1 * (window.pageYOffset + offset) * speed / 100000;
-
-    if (t == lastT) {
+    const pageYOffset = window.pageYOffset;
+    if (pageYOffset == lastPageYOffset) {
         requestAnimationFrame(animateCircles);
         return;
     }
 
     for (let i = 0; i < words.length; i++) {
-        applyStyles(words[i], t);
+        applyStyles(words[i], pageYOffset);
     }
-    lastT = t;
+    lastPageYOffset = pageYOffset;
 
     if (verticalDevice) {
         youmeus.addClass("vertical");
@@ -62,8 +58,11 @@ function animateCircles() {
 
 const maxBlur = 0.2;
 
-function applyStyles(n, t) {
-    const rot = angle(n.idx, t);
+function applyStyles(n, pos) {
+    const wa = wordAngle(n.idx);
+    const aa = positionAngle(pos);
+    const rot = (wa+aa) % 360;
+    
     n.l.word.css('transform', wordTranslateStyle(rot, n.l.side));
     n.r.word.css('transform', wordTranslateStyle(rot, n.r.side));
 
@@ -103,8 +102,13 @@ function wordTranslateStyle(rot, side) {
     return `translateX(${sep * side}${unit}) rotate(${-rot * side}deg) translateY(${radius}${unit}) rotate(${rot * side}deg)`;
 }
 
-function angle(idx, t) {
-    return (360 * t * -1 + (360 / wordsCount) * idx + 360) % 360;
+function wordAngle(idx) {
+   return ((360 / wordsCount) * idx + 360) % 360;
+}
+
+function positionAngle(pos) {
+    const t = pos * speed / 100000;
+    return 360 * t % 360;
 }
 
 function init() {
