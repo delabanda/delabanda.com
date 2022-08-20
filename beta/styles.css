@@ -10,6 +10,12 @@ body {
   font-size: 16px;
   font-weight: 400;
   font-family: "SuisseBPIntl-Regular", sans-serif;
+
+  cursor: url(./cursor_2x.png), auto;
+  cursor: -webkit-image-set(
+        url(./cursor_1x.png) 1x,
+        url(./cursor_2x.png) 2x
+      ), auto;
 }
 
 body.home {
