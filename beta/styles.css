@@ -44,7 +44,7 @@ body.home {
 }
 
 .header .name, .header .title {
-  display: none;
+  display: noneg;
 }
 
 .header .name {
@@ -209,8 +209,8 @@ body.about {
   padding: 0 1rem 1rem 1rem;
 }
 
-.about-container .text div + div {
-  margin-top: 1em;
+.about-container .text div {
+  margin-bottom: 1em;
 }
 
 @media (min-width: 768px) {
