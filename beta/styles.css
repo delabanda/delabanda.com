@@ -258,3 +258,16 @@ body.about {
     display: block;
   }
 }
+
+small.debug {
+  font-size: 12px;
+  position: relative;
+}
+
+.left small.debug  {
+  top: 10px;
+}
+
+.right small.debug {
+  top: 25px;
+}

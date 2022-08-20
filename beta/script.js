@@ -1,10 +1,13 @@
 'use strict';
 
+const debugging = false;
+
 // Begin config
 const wordsCount = 12;
 const radius = 45;
 const separationHorizontalDevice = 20;
 const separationVerticalDevice = 30;
+let separation = separationHorizontalDevice;
 const speed = 50;
 const initialSpeed = 35;
 const inertia = 50;
@@ -15,12 +18,16 @@ let youmeusContainer;
 let floatingHeader;
 
 let words = [];
-let lastPageYOffset = 0;
+let overlappingWordsAngle = 0; // Then angle where words overlap
+let lastPageYOffset = -1;
 
 let verticalDevice = false;
 
 function animateCircles() {
     verticalDevice = window.innerHeight > window.innerWidth;
+    separation = verticalDevice ? separationVerticalDevice : separationHorizontalDevice;
+    const intersectionAlpha = Math.acos(separation / radius) * (180/Math.PI); // angle of intersection, counted as in usual maths from horizontal axis.
+    overlappingWordsAngle = 180 + (90 - intersectionAlpha); // our coordinates start with angle 0 at the bottom, 180 at the top, plus the difference.
 
     const pageYOffset = window.pageYOffset;
     if (pageYOffset == lastPageYOffset) {
@@ -62,9 +69,27 @@ function applyStyles(n, pos) {
     const wa = wordAngle(n.idx);
     const aa = positionAngle(pos);
     const rot = (wa+aa) % 360;
+    if (debugging) {
+        const debugText = `rot=${rot}, idx=${n.idx}, wa=${wa}, pos=${pos}, aa=${aa}`;
+        n.l.debug.text(debugText);
+        n.r.debug.text(debugText);
+    }
     
     n.l.word.css('transform', wordTranslateStyle(rot, n.l.side));
     n.r.word.css('transform', wordTranslateStyle(rot, n.r.side));
+
+
+    // Special case handling for first two "us" overlapping
+    if (n.idx == 0 && aa < 15) {
+        blurAndOpacity(n.l.youme, 0, 0);
+        blurAndOpacity(n.r.youme, 0, 0);
+        blurAndOpacity(n.l.us, 0, 1);
+        blurAndOpacity(n.r.us, 0, 1);
+        if (aa < 0.5) {
+            n.r.us.css('opacity', `${aa}`);
+        }
+        return
+    }
 
     const transitionToUsStart = verticalDevice ? 210 : 195;
     const transitionDuration = 20;
@@ -90,20 +115,29 @@ function applyStyles(n, pos) {
 }
 
 function morph(from, to, progress) {
-    from.css('filter', `blur(${maxBlur * progress}em)`);
-    from.css('opacity', `${1 - progress}`);
-    to.css('filter', `blur(${maxBlur * (1 - progress)}em)`);
-    to.css('opacity', `${progress}`);
+    blurAndOpacity(from, progress, 1-progress);
+    blurAndOpacity(to, 1 - progress, progress);
 }
 
+function blurAndOpacity(node, blur, opacity) {
+    node.css('filter', `blur(${maxBlur * blur}em)`);
+    node.css('opacity', `${opacity}`);
+}
+
+//                    .  
+//              .     |    .
+//        .           |
+//   .                |
+//   -----------------|-------
+//   <----- sep ----->
+//   <-------- radius ------->
 function wordTranslateStyle(rot, side) {
     const unit = verticalDevice ? "vh" : "vw";
-    const sep = verticalDevice ? separationVerticalDevice : separationHorizontalDevice;
-    return `translateX(${sep * side}${unit}) rotate(${-rot * side}deg) translateY(${radius}${unit}) rotate(${rot * side}deg)`;
+    return `translateX(${separation * side}${unit}) rotate(${-rot * side}deg) translateY(${radius}${unit}) rotate(${rot * side}deg)`;
 }
 
 function wordAngle(idx) {
-   return ((360 / wordsCount) * idx + 360) % 360;
+   return (overlappingWordsAngle + (360 / wordsCount) * idx + 360) % 360;
 }
 
 function positionAngle(pos) {
@@ -145,11 +179,17 @@ function createWords(idx) {
 }
 
 function createWord(youmeText, usText, idx, side) {
-    const word = $('<div class="word"></div>');
+    const sideClass = side > 0 ? 'right' : 'left'; 
+    const word = $(`<div class="word ${sideClass}"></div>`);
     const youme = $(`<div class="youme abs-centered">${youmeText}</div>`);
     const us = $(`<div class="us abs-centered">${usText}</div>`);
-    const debug = $(`<div><small class="debug"></small></div>`);
-    word.append(youme).append(us).append(debug);
+    const debug = $(`<small class="debug"></small>`);
+    word.append(youme).append(us);
+    if (debugging) {
+        const debugContainer = $(`<div></div>`);
+        debugContainer.append(debug);
+        word.append(debugContainer);
+    }
 
     const container = $('<div class="abs-centered"></div>');
     container.append(word)
