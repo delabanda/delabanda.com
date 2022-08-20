@@ -68,14 +68,27 @@ body.home {
   border-radius: var(--size);
   text-align: center;
   background-color: white;
-  color: #2461F4;
+  color: var(--home-bg);;
   padding: 0 0.5em;
   font-family: "SuisseBPIntl-Light", sans-serif;
   font-weight: bold;
+  transition: 0.25s;
 }
 
 .home .me-nav-circle:hover {
   color: white;
+  background-color: var(--about-bg);
+}
+
+.home .abs-float .me-nav-circle {
+  background-color: var(--home-bg);
+  color: white;
+  border: 1px solid white;
+}
+
+.home .abs-float .me-nav-circle:hover {
+  color: white;
+  border: 1px solid var(--home-bg);
   background-color: var(--about-bg);
 }
 
@@ -153,13 +166,11 @@ a {
   border-radius: 1.5em;
   font-size: 16pt;
   text-align: center;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  transition: 0.5s;
   cursor: pointer;
   padding: 0 2em;
   white-space: nowrap;
   font-family: "SuisseBPIntl-Light", sans-serif;
+  transition: 0.25s;
 }
 
 @media (min-width: 768px) {
@@ -174,9 +185,16 @@ a {
   }
 }
 
+#letstalk {
+  background-color: white;
+  border: 1px solid white;
+  color: var(--home-bg);
+}
+
 #letstalk:hover {
-  border: 1px solid rgba(255, 255, 255, 1);
-  font-weight: bold;
+  color: white;
+  border: 1px solid var(--home-bg);
+  background-color: var(--about-bg);
 }
 
 body.about {
