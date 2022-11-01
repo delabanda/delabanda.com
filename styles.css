@@ -302,3 +302,46 @@ small.debug {
 .right small.debug {
   top: 25px;
 }
+
+.about .preview {
+  z-index: 2;
+  position: absolute;
+  bottom: 0%;
+  transition: 1s;
+
+  right: -5vw;
+  opacity: 0;
+}
+
+
+@media (min-width: 1024px) {
+  .about .preview.active {
+    opacity: 1;
+  }
+
+  .previewable {
+    /* color: var(--home-bg); */
+  }
+  .previewable:hover {
+    color: var(--home-bg);
+  }
+}
+
+.about .preview .content {
+  transition: 1s;
+  transform: scale(0.9);
+  height: 60vh;
+  padding: 1rem;
+}
+
+.about .preview .content video {
+  height: 100%;
+}
+
+.about .preview.active {
+  right: 0vw;
+}
+
+.about .preview.active .content {
+  transform: scale(1);
+}

@@ -146,6 +146,17 @@ function positionAngle(pos) {
 }
 
 function init() {
+    if ($(".home").length > 0) {
+        console.log("there is home")
+        initHome();
+    }
+
+    if ($(".about".length > 0)) {
+        initAbout();
+    }
+}
+
+function initHome() {
     youmeusContainer = $("#youmeus_container")
     youmeus = $("#youmeus");
 
@@ -164,6 +175,19 @@ function init() {
     header.after(floatingHeader);
 
     requestAnimationFrame(animateCircles);
+}
+
+function initAbout() {
+    $(".previewable").mouseover(function(e) {
+        const id = e.target.getAttribute("data-preview");
+        const preview = $(`.preview[data-preview='${id}']`);
+        preview.addClass("active");
+        preview.find('video').trigger('play');
+    })
+    $(".previewable").mouseout(function(e) {
+        const id = e.target.getAttribute("data-preview");
+        $(`.preview[data-preview='${id}']`).removeClass("active");
+    })
 }
 
 
