@@ -303,7 +303,19 @@ small.debug {
   top: 25px;
 }
 
+@media (min-width: 1024px) {
+  .about .preview {
+    display: block;
+  }
+  
+  .previewable:hover {
+    color: var(--home-bg);
+  }
+}
+
 .about .preview {
+  display: none;
+
   z-index: 2;
   position: absolute;
   bottom: 0%;
@@ -312,19 +324,9 @@ small.debug {
   right: -5vw;
   opacity: 0;
 }
-
-
-@media (min-width: 1024px) {
-  .about .preview.active {
-    opacity: 1;
-  }
-
-  .previewable {
-    /* color: var(--home-bg); */
-  }
-  .previewable:hover {
-    color: var(--home-bg);
-  }
+  
+.about .preview.active {
+  opacity: 1;
 }
 
 .about .preview .content {
