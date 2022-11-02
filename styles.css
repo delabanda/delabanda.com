@@ -305,7 +305,7 @@ small.debug {
 
 @media (min-width: 1024px) {
   .about .preview {
-    display: block;
+    display: block !important;
   }
   
   .previewable:hover {
