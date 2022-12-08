@@ -1,9 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
+
+/******************************************
+*
+* Vars 
+*
+******************************************/
+
 :root {
   --blue: #2461F4;
   --dark: #212121;
 }
+
+
+/******************************************
+*
+* General 
+*
+******************************************/
 
 body {
   margin: 0;
@@ -12,39 +26,20 @@ body {
   font-family: "SuisseBPIntl-Regular", sans-serif;
 
   cursor: url(./cursor_2x.png), auto;
-  cursor: -webkit-image-set(
-        url(./cursor_1x.png) 1x,
-        url(./cursor_2x.png) 2x
-      ), auto;
+  cursor: -webkit-image-set(url(./cursor_1x.png) 1x,
+      url(./cursor_2x.png) 2x), auto;
 }
 
-body.home {
-  background-color: var(--blue);
-  color: white;
-}
+/******************************************
+*
+* Header 
+*
+******************************************/
 
-.abs-float {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-}
-
-.tr-med {
-  transition: 500ms;
-}
-
-.op-0 {
-  opacity: 0;
-}
 
 .header {
   font-size: 24px;
   padding: 1rem 1rem 4rem 1rem;
-}
-
-.about .header .name, .about .header .title {
-  display: none;
 }
 
 .header .name {
@@ -68,7 +63,8 @@ body.home {
   border-radius: var(--size);
   text-align: center;
   background-color: white;
-  color: var(--blue);;
+  color: var(--blue);
+  ;
   padding: 0 0.5em;
   font-family: "SuisseBPIntl-Light", sans-serif;
   font-weight: bold;
@@ -102,12 +98,21 @@ body.home {
   background-color: white;
 }
 
+
+.about .header .name,
+.about .header .title {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .about .header .name, .about .header .title {
+
+  .about .header .name,
+  .about .header .title {
     display: block;
   }
 
-  .header .name, .header .title {
+  .header .name,
+  .header .title {
     display: block;
   }
 
@@ -115,6 +120,24 @@ body.home {
     font-size: 20px;
   }
 }
+
+@media (min-width: 768px) {
+  .about .header {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+}
+
+/******************************************
+*
+* Home 
+*
+******************************************/
+
+body.home {
+  background-color: var(--blue);
+  color: white;
+}
+
 
 #youmeus {
   font-family: 'Questrial', sans-serif;
@@ -138,15 +161,6 @@ body.home {
   #youmeus {
     font-size: 120pt;
   }
-}
-
-.abs-centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-  text-align: center;
 }
 
 #footer {
@@ -197,28 +211,27 @@ a {
   background-color: var(--dark);
 }
 
+/******************************************
+*
+* About 
+*
+******************************************/
+
 body.about {
   color: white;
   background-color: var(--dark);
 }
 
-@media (min-width: 768px) {
-  .about .header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-}
-
 .about a {
-  color: #2461F4;
-}
-.about a:hover {
   color: white;
 }
 
+.about a:hover {
+  color: #2461F4;
+}
+
 .about-container {
-  min-height: calc(100vh - 40pt);
+  min-height: calc(100vh - 100px);
   font-weight: 100;
   font-family: "SuisseBPIntl-Thin", sans-serif;
   font-size: 32px;
@@ -232,40 +245,69 @@ body.about {
 }
 
 @media (min-width: 768px) {
-  .about-container {
-    margin-top: 1rem;
-    max-width: 80vw;
-    padding: 1rem;
+  .about-container .text {
+    width: 80vw;
   }
 }
 
 @media (min-width: 1024px) {
   .about-container {
-    max-width: 70vw;
     font-size: 36px;
+  }
+
+  .about-container .text {
+    width: 70vw;
   }
 }
 
 @media (min-width: 1600px) {
   .about-container {
-    width: 1200px;
     font-size: 46px;
+  }
+
+  .about-container .text {
+    width: 1100px;
   }
 }
 
-.about ul.links {
-  display: inline;
+.text-skills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+  .text-skills {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .about .text-skills .skills {
+    width: 100%;
+  }
+}
+
+.text-skills .skills {
+  width: 25%;
+  max-width: 450px;
+  font-size: 0.6em;
+  line-height: 1.2em;
+  white-space: nowrap;
+}
+
+.about ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.about .links li {
- display: inline-block;
+.about ul.links {
+  display: inline;
 }
 
-.about .text  .links li:not(:last-child)::after {
-  content: " / ";
+.about .links li {
+  display: inline-block;
 }
 
 .contact {
@@ -273,7 +315,7 @@ body.about {
 }
 
 @media (min-width: 768px) {
-  .about .contact .links li + li {
+  .about .contact .links li+li {
     margin-left: 1em;
   }
 }
@@ -281,9 +323,6 @@ body.about {
 @media (max-width: 768px) {
   .about .contact ul.links {
     display: block;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
   }
 
   .about .contact .links li {
@@ -291,27 +330,22 @@ body.about {
   }
 }
 
-small.debug {
-  font-size: 12px;
-  position: relative;
-}
 
-.left small.debug  {
-  top: 10px;
-}
-
-.right small.debug {
-  top: 25px;
-}
+/******************************************
+*
+* About / Preview 
+*
+******************************************/
 
 @media (min-width: 1024px) {
   .about .preview {
     display: block !important;
   }
-  
+
   .previewable {
     color: var(--blue);
   }
+
   .previewable:hover {
     color: white;
   }
@@ -328,7 +362,7 @@ small.debug {
   right: -5vw;
   opacity: 0;
 }
-  
+
 .about .preview.active {
   opacity: 1;
 }
@@ -350,4 +384,48 @@ small.debug {
 
 .about .preview.active .content {
   transform: scale(1);
+}
+
+/******************************************
+*
+* Utils 
+*
+******************************************/
+
+
+.abs-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.abs-float {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+.tr-med {
+  transition: 500ms;
+}
+
+.op-0 {
+  opacity: 0;
+}
+
+small.debug {
+  font-size: 12px;
+  position: relative;
+}
+
+.left small.debug {
+  top: 10px;
+}
+
+.right small.debug {
+  top: 25px;
 }
