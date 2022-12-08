@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
 :root {
-  --home-bg: #2461F4;
-  --about-bg: #212121;
+  --blue: #2461F4;
+  --dark: #212121;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 }
 
 body.home {
-  background-color: var(--home-bg);
+  background-color: var(--blue);
   color: white;
 }
 
@@ -68,7 +68,7 @@ body.home {
   border-radius: var(--size);
   text-align: center;
   background-color: white;
-  color: var(--home-bg);;
+  color: var(--blue);;
   padding: 0 0.5em;
   font-family: "SuisseBPIntl-Light", sans-serif;
   font-weight: bold;
@@ -77,28 +77,28 @@ body.home {
 
 .home .me-nav-circle:hover {
   color: white;
-  background-color: var(--about-bg);
+  background-color: var(--dark);
 }
 
 .home .abs-float .me-nav-circle {
-  background-color: var(--home-bg);
+  background-color: var(--blue);
   color: white;
   border: 1px solid white;
 }
 
 .home .abs-float .me-nav-circle:hover {
   color: white;
-  border: 1px solid var(--home-bg);
-  background-color: var(--about-bg);
+  border: 1px solid var(--blue);
+  background-color: var(--dark);
 }
 
 .about .me-nav-circle {
   color: white;
-  background-color: var(--home-bg);
+  background-color: var(--blue);
 }
 
 .about .me-nav-circle:hover {
-  color: var(--home-bg);
+  color: var(--blue);
   background-color: white;
 }
 
@@ -188,18 +188,18 @@ a {
 #letstalk {
   background-color: white;
   border: 1px solid white;
-  color: var(--home-bg);
+  color: var(--blue);
 }
 
 #letstalk:hover {
   color: white;
-  border: 1px solid var(--home-bg);
-  background-color: var(--about-bg);
+  border: 1px solid var(--blue);
+  background-color: var(--dark);
 }
 
 body.about {
   color: white;
-  background-color: var(--about-bg);
+  background-color: var(--dark);
 }
 
 @media (min-width: 768px) {
@@ -211,10 +211,10 @@ body.about {
 }
 
 .about a {
-  color: white;
+  color: #2461F4;
 }
 .about a:hover {
-  color: #2461F4;
+  color: white;
 }
 
 .about-container {
@@ -308,15 +308,18 @@ small.debug {
     display: block !important;
   }
   
+  .previewable {
+    color: var(--blue);
+  }
   .previewable:hover {
-    color: var(--home-bg);
+    color: white;
   }
 }
 
 .about .preview {
   display: none;
 
-  z-index: 2;
+  z-index: -1;
   position: absolute;
   bottom: 0%;
   transition: 1s;
