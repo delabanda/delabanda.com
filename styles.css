@@ -28,6 +28,7 @@ body {
   cursor: url(./cursor_2x.png), auto;
   cursor: -webkit-image-set(url(./cursor_1x.png) 1x,
       url(./cursor_2x.png) 2x), auto;
+  overflow-x: hidden;
 }
 
 /******************************************
