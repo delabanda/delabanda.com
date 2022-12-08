@@ -221,7 +221,8 @@ body.about {
   min-height: calc(100vh - 40pt);
   font-weight: 100;
   font-family: "SuisseBPIntl-Thin", sans-serif;
-  font-size: 26px;
+  font-size: 32px;
+  line-height: 1.1em;
   position: relative;
   padding: 0 1rem 1rem 1rem;
 }
@@ -241,14 +242,14 @@ body.about {
 @media (min-width: 1024px) {
   .about-container {
     max-width: 70vw;
-    font-size: 32px;
+    font-size: 36px;
   }
 }
 
 @media (min-width: 1600px) {
   .about-container {
     width: 1200px;
-    font-size: 36px;
+    font-size: 46px;
   }
 }
 
