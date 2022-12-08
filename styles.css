@@ -237,6 +237,10 @@ body.about {
   padding: 0 1rem 1rem 1rem;
 }
 
+.about .text, .about .skills {
+  margin-bottom: 1em;
+}
+
 .about-container .text div {
   margin-bottom: 1em;
 }
@@ -388,7 +392,6 @@ body.about {
 * Utils 
 *
 ******************************************/
-
 
 .abs-centered {
   position: absolute;
