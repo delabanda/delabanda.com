@@ -99,17 +99,13 @@ body {
   background-color: white;
 }
 
-
-.about .header .name,
 .about .header .title {
-  display: none;
+  opacity: 0;
 }
 
 @media (max-width: 768px) {
-
-  .about .header .name,
   .about .header .title {
-    display: block;
+    opacity: 1;
   }
 
   .header .name,
