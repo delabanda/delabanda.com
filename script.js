@@ -4,9 +4,9 @@ const debugging = false;
 
 // Begin config
 const wordsCount = 12;
-const radius = 45;
+const radius = 50;
 const separationHorizontalDevice = 20;
-const separationVerticalDevice = 30;
+const separationVerticalDevice = 25;
 let separation = separationHorizontalDevice;
 const speed = 50;
 const initialSpeed = 35;
