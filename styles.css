@@ -65,11 +65,12 @@ body {
   text-align: center;
   background-color: white;
   color: var(--blue);
-  ;
   padding: 0 0.5em;
   font-family: "SuisseBPIntl-Light", sans-serif;
   font-weight: bold;
   transition: 0.25s;
+  position: relative;
+  z-index: 100;
 }
 
 .home .me-nav-circle:hover {
