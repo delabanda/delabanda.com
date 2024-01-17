@@ -28,7 +28,14 @@ body {
   cursor: url(./cursor_2x.png), auto;
   cursor: -webkit-image-set(url(./cursor_1x.png) 1x,
       url(./cursor_2x.png) 2x), auto;
+}
+
+#no-scroll-container {
+  /* see: https://stackoverflow.com/questions/14270084/overflow-xhidden-doesnt-prevent-content-from-overflowing-in-mobile-browsers */
   overflow-x: hidden;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
 }
 
 /******************************************
